@@ -6,7 +6,6 @@ import org.openqa.selenium.Cookie;
 import java.util.Map;
 
 import static com.codeborne.selenide.Selenide.*;
-import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
 
 public class AddToCartTest {
@@ -41,11 +40,12 @@ public class AddToCartTest {
                         .extract()
                         .body().asString();
 
-        open("http://demowebshop.tricentis.com/Themes/DefaultClean/Content/images/logo.png");
+        open("http://demowebshop.tricentis.com");
         authorizationCookieMap.forEach((key, value) -> WebDriverRunner.getWebDriver().manage()
                 .addCookie(new Cookie(key, value)));
+        refresh();
 
-        open("http://demowebshop.tricentis.com");
+
         $(".account").shouldHave(Condition.text("aaa@bbb.com"));
     }
 
