@@ -47,6 +47,8 @@ public class AddToCartTest {
 
 
         $(".account").shouldHave(Condition.text("aaa@bbb.com"));
+
+        closeWebDriver();
     }
 
     public String convertWithIteration(Map<String, String> map) {
